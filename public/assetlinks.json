@@ -1,0 +1,15 @@
+[
+    {
+      "relation": [
+        "delegate_permission/common.handle_all_urls"
+      ],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "com.capcons.app",
+        "sha256_cert_fingerprints": [
+          "4F:96:67:6B:BD:78:E4:C1:62:FE:BB:60:39:69:81:BA:E1:36:B4:8E:D9:A3:C9:34:C3:58:15:2D:FB:F5:6A:7C"
+        ]
+      },
+      "pathPattern": "/.*"
+    }
+  ]
