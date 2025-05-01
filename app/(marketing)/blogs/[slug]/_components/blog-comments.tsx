@@ -292,9 +292,9 @@ const BlogComments = () => {
           </Button>
         </form>
       </Form>
-      <div className="relative flex items-center gap-2 mb-6">
+      <div className="relative flex gap-2 mb-6">
         <Select value={sort} onValueChange={(value) => { setSort(value); setCurrentPage(1); }}>
-          <SelectTrigger className="text-xl font-semibold text-[#2E134D] focus:outline-none border-none shadow-none">
+          <SelectTrigger className="text-xl font-semibold text-[#2E134D] focus:outline-none border-none shadow-none px-0">
             <SelectValue placeholder="Select sort" />
           </SelectTrigger>
           <SelectContent>

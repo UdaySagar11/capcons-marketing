@@ -23,7 +23,7 @@ export default function BlogsListing() {
 
   const { data: latestBlogsData, isPending: isLatestPending } = useQuery({
     queryKey: ["latest-blogs"],
-    queryFn: () => getBlogsPublicList({ page: 1, length: 4 }),
+    queryFn: () => getBlogsPublicList({ page: 1, length: 5 }),
   });
 
   const allCategories = useMemo(() => {

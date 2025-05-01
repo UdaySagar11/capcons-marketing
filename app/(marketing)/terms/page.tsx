@@ -1,44 +1,20 @@
 import React from "react"
-import Image from "next/image"
 import RoundedBottom from "@/components/common/rounded-bottom"
+import { Banner } from "@/components/common/banner"
+import { GetStarted } from "../_components/get-started"
 
 export default function TermPage() {
     return (
         <div className="font-montserrat overflow-x-hidden">
-            <div className="relative p-4 pt-28 md:px-24 md:pt-28 lg:pt-32 pb-0">
-                <div className="h-[180px] md:h-[200px] lg:h-[250px]">
-                    <Image
-                        src="/privacy-left.png"
-                        alt="Privacy"
-                        width={1000}
-                        height={1000}
-                        className="top-0 left-0 absolute w-auto h-[100px]  md:h-[150px] lg:h-[200px] xl:h-[250px]"
-                    />
-
-                    <Image
-                        src="/privacy-right.png"
-                        alt="Privacy"
-                        width={1000}
-                        height={1000}
-                        className="top-[200px] md:top-[180px] lg:top-[160px] xl:top-[140px] -right-20  absolute w-auto h-[100px] md:h-[150px] lg:h-[200px] xl:h-[250px]"
-                    />
-
-                    <div className="z-10 relative flex flex-col justify-center items-center text-center container">
-                        <h1 className="mb-4 font-bold text-xl md:text-4xl text-[#400E4D]">Terms and conditions</h1>
-                        <p className="mb-8 font-semibold  text-sm md:text-lg text-[#400E4D] max-w-4xl">
-                            By accessing our website, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable laws
-                        </p>
-                        <p className=" text-[10px] md:text-sm text-[#400E4D]">
-                            Last Updated 23rd May, 2024
-                        </p>
-                    </div>
-                </div>
-
-                <div className="mt-8 md:mt-16 px-4 md:px-0 container">
+            <Banner
+                title="Terms and conditions"
+                description="By accessing our website, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable laws."
+                subtitle="Last Updated  23rd May, 2024"
+            />
+            <div className="relative p-4 pb-0">
+                <div className="mt-8 md:mt-16 px-4 md:px-0 container max-w-6xl">
 
                     <article className="  prose-a:text-primary space-y-12 text-[#400E4D] ">
-                        <p >Updated as of 11.10.2024</p>
-
                         <h2 className="text-lg md:text-xl font-semibold mb-4">Capcons!</h2>
                         <p className="text-sm md:text-base leading-relaxed">
                             {`Capcon, an exciting new platform where you can connect with your
@@ -497,6 +473,9 @@ export default function TermPage() {
                             </ul>
                         </section>
                     </article>
+                </div>
+                <div className="mt-8 md:mt-16 px-4 md:px-0 container">
+                    <GetStarted />
                 </div>
             </div>
             <RoundedBottom />

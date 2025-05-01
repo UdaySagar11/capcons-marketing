@@ -26,10 +26,7 @@ const SideNavbar = ({ logo, menu, auth }: NavbarProps) => {
       <div className="flex items-center justify-between h-full">
         {/* Logo */}
         <Link href={logo.url} className="flex items-center gap-1">
-          <img src={logo.src} className="max-h-8" alt={logo.alt} />
-          <span className="text-2xl font-raleway text-white font-bold tracking-tighter">
-            {logo.title}
-          </span>
+          <img src={logo.src.desktop} className="max-h-8" alt={logo.alt} />
         </Link>
         <Sheet>
           <SheetTrigger asChild>
@@ -42,7 +39,7 @@ const SideNavbar = ({ logo, menu, auth }: NavbarProps) => {
               <SheetTitle>
                 <a href={logo.url} className="flex w-fit items-center gap-2">
                   <img
-                    src={logo.src}
+                    src={logo.src.mobile}
                     className="max-h-8 invert"
                     alt={logo.alt}
                   />

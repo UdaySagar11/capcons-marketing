@@ -1,12 +1,13 @@
 import { Metadata } from 'next'
 import { Card, CardContent } from "@/components/ui/card"
-import Image from "next/image"
 import { Icons } from "@/lib/icons"
 import { perks } from "@/config/mock/careers"
 import { getCareers } from "@/lib/actions/careers"
 import { CareerFilters } from "./_components/career-filters"
 import RoundedBottom from "@/components/common/rounded-bottom"
 import { defaultMetadata, siteConfig } from '@/lib/metadata'
+import { Banner } from "@/components/common/banner"
+import { GetStarted } from '../_components/get-started'
 
 export const metadata: Metadata = {
   ...defaultMetadata,
@@ -44,22 +45,12 @@ export default async function CareerPage() {
   }
 
   return (
-    <div className="pt-20 pb-0 text-[#2E134D]">
-      <div className="container mx-auto px-4 sm:px-6 py-4 max-w-4xl text-center">
-        <h1 className="font-bold text-[#2E134D] text-xl sm:text-4xl tracking-tight">Join Our Team</h1>
-        <p className="mt-4 text-[#8E2784] text-sm sm:text-2xl">
-          We&apos;re always looking for <span className="text-[#39089D]">vibrant</span>, <span className="text-[#FF9C00]">energetic</span> people who love to create and innovate.
-          Be it through their code, words or vision.
-        </p>
-      </div>
-      <Image
-        src="/images/careers-banner.png"
-        alt=""
-        width={1000}
-        height={100}
-        className="w-full h-auto object-cover container"
+    <div className="pb-0 text-[#2E134D]">
+      <Banner
+        title="Join Our Team"
+        description="We're always looking for vibrant, energetic people who love to create and innovate. Be it through their code, words or vision."
       />
-      <div className="container px-4 sm:px-6 md:px-12 lg:px-28">
+      <div className="container mx-auto space-y-12 sm:space-y-16">
         <div className="space-y-4 mt-12 text-center">
           <h1 className="font-bold text-[#2E134D] text-xl sm:text-4xl tracking-tight">Our work policy</h1>
           <p className="text-[#2E134D] text-sm sm:text-base max-w-5xl mx-auto">
@@ -69,36 +60,36 @@ export default async function CareerPage() {
           </p>
         </div>
 
-        <div className="space-y-12 sm:space-y-16 mt-12 sm:mt-20 pb-0">
-          <div>
-            <h2 className="mb-8 sm:mb-12 font-bold text-[#2E134D] text-xl sm:text-4xl tracking-tight text-center">Perks and Benefits</h2>
-            <div className="sm:flex sm:flex-wrap sm:justify-center gap-4 grid grid-cols-2 px-0">
-              {perks.map((perk, index) => (
-                <Card key={index} className="bg-white shadow-xl border-none sm:w-[250px]">
-                  <CardContent className="flex flex-col items-start p-2 sm:p-6">
-                    <div className="mb-4 mt-2">
-                      {getIcon(perk.icon)}
-                    </div>
-                    <h3 className="mb-2 font-semibold text-sm sm:text-lg text-[#2E134D]">{perk.title}</h3>
-                    <p className="text-slate-500 text-xs sm:text-sm">{perk.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+        <div>
+          <h2 className=" font-bold text-[#2E134D] text-xl sm:text-4xl tracking-tight text-center">Perks and Benefits</h2>
+          <div className="sm:flex sm:flex-wrap sm:justify-center gap-4 grid grid-cols-2 px-0">
+            {perks.map((perk, index) => (
+              <Card key={index} className="bg-white shadow-xl border-none sm:w-[250px] py-0">
+                <CardContent className="flex flex-col items-start p-4 sm:p-6">
+                  <div className="mb-4 mt-2">
+                    {getIcon(perk.icon)}
+                  </div>
+                  <h3 className="mb-2 font-semibold text-sm sm:text-lg text-[#2E134D]">{perk.title}</h3>
+                  <p className="text-slate-500 text-xs sm:text-sm">{perk.description}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-
-          <div className="text-center">
-            <p className="mb-2 text-sm md:text-base">Not able to find what you are looking for?</p>
-            <a
-              href="mailto:careers@capcons.com"
-              className="text-[#FF9C00] hover:underline text-sm md:text-base"
-            >
-              careers@capcons.com
-            </a>
-          </div>
-
-          <CareerFilters careers={careers} />
         </div>
+
+        <CareerFilters careers={careers} />
+
+
+        <div className="text-center">
+          <p className="mb-2 text-sm md:text-base">Not able to find what you are looking for?</p>
+          <a
+            href="mailto:careers@capcons.com"
+            className="text-[#FF9C00] hover:underline text-sm md:text-base"
+          >
+            careers@capcons.com
+          </a>
+        </div>
+        <GetStarted />
       </div>
       <RoundedBottom />
     </div>

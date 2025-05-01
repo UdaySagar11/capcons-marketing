@@ -7,7 +7,7 @@ import { GetStartedForm } from "./get-started-form"
 
 export const GetStarted = () => {
   return (
-    <div className="container mx-auto">
+    <div className="">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -40,7 +40,7 @@ export const GetStarted = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="mx-auto mb-8 max-w-xl text-white text-sm sm:text-base font-montserrat"
+            className="mx-auto mb-8 max-w-2xl text-white text-sm sm:text-base font-montserrat"
           >
             Register with Capcons to be the first to know all about what is happening and get
             executive access to all circles before others!

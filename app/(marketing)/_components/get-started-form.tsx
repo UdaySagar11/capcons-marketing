@@ -49,7 +49,7 @@ export const GetStartedForm = () => {
             <FormItem className="flex-1 w-full">
               <FormControl>
                 <Input
-                  className="bg-transparent pl-4 sm:pl-6 lg:pl-10 border-none ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 h-10 sm:h-12 text-xs md:text-sm text-black"
+                  className="bg-transparent pl-4 sm:pl-6 lg:pl-10 border-none ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 h-10 sm:h-11 text-xs md:text-sm text-black rounded-full"
                   placeholder="Enter your Email Address"
                   {...field}
                 />
@@ -65,7 +65,7 @@ export const GetStartedForm = () => {
         >
           <Button
             type="submit"
-            className="bg-[#4824D6] hover:bg-[#3d1eb8] m-1 px-4 sm:px-8 rounded-full text-white"
+            className="bg-[#39089D] hover:bg-[#39089D]  px-4 sm:px-8 rounded-full text-white font-bold"
             disabled={isPending}
           >
             {isPending ? "Registering..." : "Register"}

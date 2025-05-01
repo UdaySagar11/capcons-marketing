@@ -152,7 +152,10 @@ export interface MenuItem {
 export interface NavbarProps {
   logo: {
     url: string;
-    src: string;
+    src: {
+      desktop: string;
+      mobile: string;
+    };
     alt: string;
     title: string;
   };

@@ -20,10 +20,7 @@ const TopNavbar = ({ logo, menu, auth }: NavbarProps) => {
         <div className="flex items-center gap-6">
           {/* Logo */}
           <Link href={logo.url} className="flex items-center gap-1">
-            <img src={logo.src} className="max-h-8" alt={logo.alt} />
-            <span className="text-2xl font-raleway text-white font-bold tracking-tighter">
-              {logo.title}
-            </span>
+            <img src={logo.src.desktop} className="max-h-8" alt={logo.alt} />
           </Link>
         </div>
         <div className="flex items-center">
@@ -33,11 +30,11 @@ const TopNavbar = ({ logo, menu, auth }: NavbarProps) => {
                 <NavigationMenuItem key={item.title}>
                   {item.items ? (
                     <>
-                      <NavigationMenuTrigger className="text-white hover:text-white/70 text-lg font-medium h-[80px] bg-transparent hover:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-white/70 px-4 focus:bg-transparent focus:text-white/70 focus-visible:ring-0 focus-visible:outline-none data-[state=open]:hover:bg-transparent data-[state=open]:focus:bg-transparent">
+                      <NavigationMenuTrigger className="text-white/90 hover:text-white/90 focus:text-white/90 data-[state=open]:text-white/90  text-lg font-bold h-[80px] bg-transparent hover:bg-transparent data-[state=open]:bg-transparent  px-4 focus:bg-transparent focus-visible:ring-0 focus-visible:outline-none data-[state=open]:hover:bg-transparent data-[state=open]:focus:bg-transparent">
                         {item.title}
                       </NavigationMenuTrigger>
                       <NavigationMenuContent className="bg-white border-none shadow-lg rounded-lg overflow-hidden">
-                        <ul className="grid gap-3 p-4 md:w-[500px] lg:w-[600px] lg:grid-cols-[.75fr_1fr]">
+                        <ul className="grid gap-3 p-2 md:w-[500px] lg:w-[600px] lg:grid-cols-[.75fr_1fr]">
                           <li className="row-span-3">
                             <NavigationMenuLink asChild>
                               <Link
@@ -53,10 +50,10 @@ const TopNavbar = ({ logo, menu, auth }: NavbarProps) => {
                                     className="rounded-xl object-cover aspect-video w-full"
                                   />
                                 </div>
-                                <div className="mb-2 text-lg font-medium text-[#2E134D]">
+                                <div className="mb-2 text-lg font-raleway font-bold text-[#2E134D]">
                                   StormNorms - D2C Incubator
                                 </div>
-                                <p className="text-sm leading-tight text-[#2E134D]/70">
+                                <p className="text-sm leading-tight text-[#2E134D] font-montserrat">
                                   Join our contest, showcase your talent, win exciting rewards & grow your community with Capcons!
                                 </p>
                               </Link>
@@ -71,11 +68,11 @@ const TopNavbar = ({ logo, menu, auth }: NavbarProps) => {
                                 >
                                   <div className="flex items-center gap-2">
                                     {child.icon}
-                                    <div className="text-sm font-medium leading-none text-[#2E134D]">
+                                    <div className="text-base font-raleway font-bold leading-none text-[#2E134D]">
                                       {child.title}
                                     </div>
                                   </div>
-                                  <p className="line-clamp-2 text-sm leading-snug text-[#2E134D]/70">
+                                  <p className="line-clamp-2 text-sm leading-snug text-[#2E134D] font-montserrat">
                                     {child.description}
                                   </p>
                                 </Link>
@@ -88,7 +85,7 @@ const TopNavbar = ({ logo, menu, auth }: NavbarProps) => {
                   ) : (
                     <Link
                       href={item.url}
-                      className="text-white hover:text-white/70 text-lg font-medium h-[80px] flex items-center justify-center px-4"
+                      className="text-white/90 text-lg font-bold h-[80px] flex items-center justify-center px-4"
                     >
                       {item.title}
                     </Link>
@@ -102,13 +99,13 @@ const TopNavbar = ({ logo, menu, auth }: NavbarProps) => {
           <Button
             asChild
             variant="ghost"
-            className="text-white hover:text-white/70 hover:bg-transparent"
+            className="text-white hover:text-white/70 hover:bg-transparent font-bold"
           >
             <a href={auth.login.url}>{auth.login.title}</a>
           </Button>
           <Button
             asChild
-            className="bg-[#C6F806] text-black hover:bg-[#C6F806]/70 rounded-full font-semibold"
+            className="bg-[#C6F806] text-black hover:bg-[#C6F806]/70 rounded-full font-bold"
           >
             <a href={auth.signup.url}>{auth.signup.title}</a>
           </Button>

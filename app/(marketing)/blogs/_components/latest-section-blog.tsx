@@ -83,19 +83,21 @@ export const LatestSectionBlogs: React.FC<LatestSectionBlogsProps> = ({
                 <SectionHeader title={title} />
                 <div className="flex flex-col md:flex-row gap-8">
                     <motion.div
-                        className="grid grid-cols-1 w-full lg:grid-cols-2 gap-8"
+                        className="grid grid-cols-1 w-full lg:grid-cols-3 gap-8"
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
                     >
-                        {blogs.map((blog, index) => (
+                        {blogs.slice(0, 5).map((blog, index) => (
                             <LatestBlogCard key={index} blog={blog} index={index} />
                         ))}
+                        <div className="lg:col-span-1">
+                            <SubscriptionForm
+                                title={exploreData.subscription.title}
+                                socialLinks={exploreData.subscription.socialLinks}
+                            />
+                        </div>
                     </motion.div>
-                    <SubscriptionForm
-                        title={exploreData.subscription.title}
-                        socialLinks={exploreData.subscription.socialLinks}
-                    />
                 </div>
             </div>
         </div>

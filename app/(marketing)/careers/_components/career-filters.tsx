@@ -1,11 +1,11 @@
 "use client"
 
-import { Badge } from "@/components/ui/badge"
-import Link from "next/link"
 import { parseAsString, useQueryState } from "nuqs"
 import { Career } from "@/@types"
-import { cn } from "@/lib/utils"
 import { useMemo } from "react"
+import { CategoryButton } from "@/components/common/category-button"
+import Link from "next/link"
+
 
 interface CareerFiltersProps {
   careers: Career[]
@@ -44,22 +44,12 @@ export function CareerFilters({ careers }: CareerFiltersProps) {
       {/* Category Filters */}
       <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8 sm:mb-16">
         {categories.map((cat) => (
-          <Badge
+          <CategoryButton
             key={cat}
-            role="button"
-            aria-pressed={category === cat}
-            tabIndex={0}
-            className={cn(
-              "cursor-pointer rounded-full px-3 sm:px-6 py-1.5 sm:py-2 text-xs sm:text-sm font-medium shadow-sm ring-1 ring-gray-200 transition-colors capitalize focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FF9C00]",
-              category === cat
-                ? "bg-[#FF9C00] text-white hover:bg-[#FF9C00]/90"
-                : "bg-white text-gray-800 hover:bg-gray-50 border border-[#400E4D]"
-            )}
+            label={cat}
+            isSelected={category === cat}
             onClick={() => toggleCategory(cat)}
-            onKeyDown={(e) => e.key === "Enter" && toggleCategory(cat)}
-          >
-            {cat}
-          </Badge>
+          />
         ))}
       </div>
 

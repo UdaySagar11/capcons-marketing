@@ -1,9 +1,8 @@
 'use client'
 
 import React from 'react'
-import { Badge } from '@/components/ui/badge'
-import { cn } from '@/lib/utils'
 import { FiSearch } from 'react-icons/fi'
+import { CategoryButton } from '@/components/common/category-button'
 
 interface BlogFiltersProps {
   categories: string[]
@@ -21,7 +20,7 @@ export const BlogFilters: React.FC<BlogFiltersProps> = ({
   onSearchChange
 }) => {
   return (
-    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4 w-full border border-white/10 rounded-2xl bg-white/80 px-2 sm:px-4 py-2 sm:py-3">
+    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4 w-full border border-white/10 rounded-2xl bg-white/80 py-2 sm:py-3">
       <div className="relative w-full max-w-full sm:max-w-xs flex-shrink-0">
         <span className="absolute left-3 top-1/2 -translate-y-1/2 text-neutral-400">
           <FiSearch size={20} />
@@ -35,36 +34,18 @@ export const BlogFilters: React.FC<BlogFiltersProps> = ({
         />
       </div>
       <div className="hidden md:flex gap-2 items-center overflow-x-auto scrollbar-hide py-1 flex-shrink-0">
-        <Badge
-          role="button"
-          aria-pressed={value === ''}
-          tabIndex={0}
-          className={cn(
-            'cursor-pointer rounded-full px-6 py-2 text-sm font-medium shadow-sm ring-1 ring-gray-200 transition-colors',
-            value === ''
-              ? 'bg-[#FF9C00] text-white hover:bg-[#FF9C00]/90'
-              : 'bg-transparent text-black border border-white/20'
-          )}
+        <CategoryButton
+          label="All"
+          isSelected={value === ''}
           onClick={() => onCategoryChange?.('')}
-        >
-          All
-        </Badge>
+        />
         {categories.map(cat => (
-          <Badge
+          <CategoryButton
             key={cat}
-            role="button"
-            aria-pressed={value === cat}
-            tabIndex={0}
-            className={cn(
-              'cursor-pointer rounded-full px-6 py-2 text-sm font-medium shadow-sm ring-1 ring-gray-200 transition-colors text-[#400E4D]',
-              value === cat
-                ? 'bg-[#FF9C00]  hover:bg-[#FF9C00]/90'
-                : 'bg-transparent border border-white/20'
-            )}
+            label={cat}
+            isSelected={value === cat}
             onClick={() => onCategoryChange?.(cat)}
-          >
-            {cat}
-          </Badge>
+          />
         ))}
       </div>
     </div>

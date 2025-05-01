@@ -44,7 +44,9 @@ const MarketingPage = () => {
         <ImportantToUsSection />
         <OurTeam />
         <MediaCoverage />
-        <GetStarted />
+        <div className='container mx-auto'>
+          <GetStarted />
+        </div>
         <RoundedBottom />
       </div>
     </>

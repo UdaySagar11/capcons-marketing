@@ -12,7 +12,7 @@ export const SocialIcon = ({ icon, href, label }: SocialIconProps) => {
     <Link
       href={href}
       aria-label={label || `Social link to ${href}`}
-      className="group flex justify-center items-center bg-white hover:scale-105 rounded-full w-9 md:w-10 h-9 md:h-10 shadow-md transition-all duration-300"
+      className="group flex justify-center items-center hover:scale-105 rounded-full w-9 md:w-10 h-9 md:h-10 shadow-md transition-all duration-300 border border-white/20"
     >
       <Image
         src={icon}

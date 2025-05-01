@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 const LandingPage = () => {
 
   return (
-    <div className='bg-[#39089D] min-h-screen'>
+    <div className='bg-[#39089D] h-screen overflow-hidden'>
       <Navbar />
       <Waitlist />
     </div>

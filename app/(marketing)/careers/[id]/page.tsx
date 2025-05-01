@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import { getCareerById, getCareers } from "@/lib/actions/careers"
-import { JobApplicationForm } from "@/app/(marketing)/careers/_components/job-application-form"
+// import { JobApplicationForm } from "@/app/(marketing)/careers/_components/job-application-form"
 import RoundedBottom from "@/components/common/rounded-bottom"
 import Link from "next/link"
 import { MapPin } from "lucide-react"
@@ -87,20 +87,12 @@ export default async function CareerDetailsPage({
 
   return (
     <div className="text-[#2E134D] font-montserrat">
-      <Image
-        src="/images/carrer-detail-banner.png"
-        alt="career-banner"
-        width={1000}
-        height={100}
-        className="w-full object-contain"
-      />
-      <div className="container mx-auto px-3 md:px-8 lg:px-20 py-2 md:py-8">
-        <h1 className="mb-2 md:mb-6 font-bold text-[#400E4D] text-lg md:text-4xl">{career.title}</h1>
-
-        <div className="flex md:flex-row flex-col md:justify-between md:items-start gap-2 md:gap-0">
-          <div className="flex justify-between items-center w-full">
-            <div className="flex items-center gap-2 md:gap-4">
-              <div className="bg-white rounded-lg flex-shrink-0 w-10 h-10 md:w-40 md:h-40 flex items-center justify-center">
+      <div className="bg-[#39089D]">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+          <div className="flex items-start justify-between gap-2 sm:gap-6">
+            {/* Job Info Section */}
+            <div className="flex items-start gap-4 sm:gap-6">
+              <div className="flex-shrink-0 w-16 h-16 sm:w-20 sm:h-20 flex items-center justify-center">
                 <Image
                   src="/images/job-logo.png"
                   alt="CapCons"
@@ -110,111 +102,101 @@ export default async function CareerDetailsPage({
                 />
               </div>
 
-              <div>
-                <div className="flex flex-wrap items-center gap-1.5 md:gap-2">
-                  <span className="font-semibold sm:font-bold text-sm md:text-2xl text-[#400E4D]">CapCons</span>
-                  <span className="text-[#2E134D] text-sm md:text-base">•</span>
-                  <span className="text-[#A5A5A5] text-xs md:text-base flex items-center gap-1">
-                    <MapPin className="w-4 h-4" />
-                    {career.location}
-                  </span>
+              <div className="flex-1 space-y-2 sm:space-y-3">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                  <h1 className="font-semibold text-sm sm:text-2xl lg:text-3xl text-white">{career.title}</h1>
+                  <div className="flex items-center gap-1 text-white text-xs sm:text-base">
+                    <MapPin className="w-3 h-3 sm:w-4 sm:h-4" />
+                    <span>{career.location}</span>
+                  </div>
                 </div>
 
-                <div className="md:hidden flex flex-wrap gap-1 mt-1">
-                  <Badge variant="secondary" className="bg-[#F0F0F0] text-[#A5A5A5] text-[10px] px-2 py-0.5">
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="secondary" className="bg-[#F0F0F033] text-[#F5F5F5] rounded-full text-xs sm:text-sm px-2 py-1">
                     {career.jobType}
                   </Badge>
-                  <Badge variant="secondary" className="bg-[#F0F0F0] text-[#A5A5A5] text-[10px] px-2 py-0.5">
+                  <Badge variant="secondary" className="bg-[#F0F0F033] text-[#F5F5F5] rounded-full text-xs sm:text-sm px-2 py-1">
                     {career.workMode}
                   </Badge>
-                  <Badge variant="secondary" className="bg-[#F0F0F0] text-[#A5A5A5] text-[10px] px-2 py-0.5">
-                    {career.jobTimings.start} - {career.jobTimings.end} {career.jobTimings.timezone}
-                  </Badge>
-                </div>
-
-                <div className="hidden md:flex flex-wrap gap-2 md:gap-4 mt-4">
-                  <Badge variant="secondary" className="bg-[#F0F0F0] text-[#A5A5A5] text-sm">
-                    {career.jobType}
-                  </Badge>
-                  <Badge variant="secondary" className="bg-[#F0F0F0] text-[#A5A5A5] text-sm">
-                    {career.workMode}
-                  </Badge>
-                  <Badge variant="secondary" className="bg-[#F0F0F0] text-[#A5A5A5] text-sm">
+                  <Badge variant="secondary" className="bg-[#F0F0F033] text-[#F5F5F5] rounded-full text-xs sm:text-sm px-2 py-1">
                     {career.jobTimings.start} - {career.jobTimings.end} {career.jobTimings.timezone}
                   </Badge>
                 </div>
               </div>
             </div>
 
-            <div className="flex items-center gap-1.5 md:gap-4 ml-auto">
+            {/* Action Buttons */}
+            <div className="flex items-center gap-3 sm:gap-4">
               <Link href="#apply-now">
-                <Button className="max-md:hidden bg-[#39089D] hover:bg-[#39089D]/90 rounded-full text-white text-sm md:text-base px-3 md:px-4 py-1.5 md:py-2">
+                <Button className="bg-[#C6F806] hover:bg-[#C6F806]/90 rounded-full text-black text-xs sm:text-base px-3 sm:px-6 py-1.5 sm:py-2 hidden sm:block">
                   Apply Now
                 </Button>
               </Link>
-              <button className="flex justify-center items-center p-0.5 md:p-1 border border-[#A5A5A5] rounded-sm">
-                <Icons.bookmark className="w-3 md:w-6 h-3 md:h-6 text-[#A5A5A5]" />
-              </button>
-              <button className="flex justify-center items-center p-0.5 md:p-1 border border-[#A5A5A5] rounded-sm">
-                <Icons.share className="w-3 md:w-6 h-3 md:h-6 text-[#A5A5A5]" />
-              </button>
+              <div className="flex items-center gap-2">
+                <button className="flex justify-center items-center p-1 border border-[#A5A5A5] rounded-sm hover:bg-white/10 transition-colors">
+                  <Icons.bookmark className="w-3 h-3 sm:w-5 sm:h-5 text-white" />
+                </button>
+                <button className="flex justify-center items-center p-1 border border-[#A5A5A5] rounded-sm hover:bg-white/10 transition-colors">
+                  <Icons.share className="w-3 h-3 sm:w-5 sm:h-5 text-white" />
+                </button>
+              </div>
             </div>
           </div>
-
-          <div className="md:hidden flex justify-end w-full">
+          {/* Mobile Only Row */}
+          <div className="flex sm:hidden mt-4  justify-center">
             <Link href="#apply-now">
-              <Button className="bg-[#C6F806] hover:bg-[#C6F806]/90 mx-auto rounded-full text-[10px] px-3 py-1 text-black h-6">
+              <Button className="bg-[#C6F806] hover:bg-[#C6F806]/90 rounded-full text-black text-xs sm:text-base px-3 sm:px-6 py-1.5 sm:py-2 w-fit">
                 Apply Now
               </Button>
             </Link>
           </div>
         </div>
+      </div>
 
-        <div className="flex lg:flex-row flex-col gap-6 md:gap-8 mt-8 md:mt-12">
-          <div className="flex-1 space-y-6 md:space-y-8">
-            <section>
-              <h2 className="font-semibold text-[#400E4D] text-lg md:text-xl">About this role</h2>
-              <div dangerouslySetInnerHTML={{ __html: career.description }} className="mt-4 font-montserrat gap-4 text-[#2E134D] text-sm md:text-base tracking-wide space-y-4" />
+      <div className="flex flex-col lg:flex-row gap-6 md:gap-8 mt-8 md:mt-12 container">
+        <div className="flex-1 space-y-6 md:space-y-8">
+          <section>
+            <h2 className="font-semibold text-[#400E4D] text-lg md:text-xl">About this role</h2>
+            <div dangerouslySetInnerHTML={{ __html: career.description }} className="mt-4 font-montserrat gap-4 text-[#2E134D] text-sm md:text-base tracking-wide space-y-4" />
 
-            </section>
-            <div id="apply-now">
-              {/* <JobApplicationForm jobId={career.id} /> */}
+          </section>
+          <div id="apply-now">
+            {/* <JobApplicationForm jobId={career.id} /> */}
 
-              <Suspense>
-                <FormSection />
-              </Suspense>
-            </div>
-          </div>
-
-          <div className="w-full lg:w-[320px]">
-            <h3 className="ml-4 font-semibold text-[#400E4D] text-base md:text-lg">Other jobs</h3>
-
-            <div className="space-y-3 mt-4">
-              {otherJobs.map((job) => (
-                <div
-                  key={job.id}
-                  className={cn(
-                    "group flex items-center justify-between rounded-xl bg-[#F9F9F9] p-3 md:p-4",
-                    job.id === career.id && "bg-[#160925] text-white"
-                  )}
-                >
-                  <div>
-                    <h4 className={cn("font-medium text-sm md:text-base", job.id === career.id ? "text-white" : "text-[#400E4D]")}>{job.title}</h4>
-                    <p className={cn("mt-1 md:mt-2 text-[#2E134D] text-xs", job.id === career.id ? "text-white" : "")}>{job.location}</p>
-                  </div>
-                  <Link
-                    href={`/careers/${job.id}`}
-                    className="bg-[#C6F806] hover:bg-[#C6F806]/90 px-3 md:px-4 py-1.5 md:py-2 rounded-full h-7 md:h-8 font-medium text-[#160925] text-xs md:text-sm text-center text-nowrap"
-                  >
-                    View Details
-                  </Link>
-                </div>
-              ))}
-            </div>
+            <Suspense>
+              <FormSection />
+            </Suspense>
           </div>
         </div>
-      </div >
+
+        <div className="w-full lg:w-[320px]">
+          <h3 className="ml-4 font-semibold text-[#400E4D] text-base md:text-lg">Other jobs</h3>
+
+          <div className="space-y-3 mt-4">
+            {otherJobs.map((job) => (
+              <div
+                key={job.id}
+                className={cn(
+                  "group flex items-center justify-between rounded-xl bg-[#F9F9F9] p-3 md:p-4",
+                  job.id === career.id && "bg-[#160925] text-white"
+                )}
+              >
+                <div>
+                  <h4 className={cn("font-medium text-sm md:text-base", job.id === career.id ? "text-white" : "text-[#400E4D]")}>{job.title}</h4>
+                  <p className={cn("mt-1 md:mt-2 text-[#2E134D] text-xs", job.id === career.id ? "text-white" : "")}>{job.location}</p>
+                </div>
+                <Link
+                  href={`/careers/${job.id}`}
+                  className="bg-[#C6F806] hover:bg-[#C6F806]/90 px-3 md:px-4 py-1.5 md:py-2 rounded-full h-7 md:h-8 font-medium text-[#160925] text-xs md:text-sm text-center text-nowrap"
+                >
+                  View Details
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
       <RoundedBottom className="md:h-24" />
-    </div >
+    </div>
   )
 }

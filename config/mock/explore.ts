@@ -77,12 +77,12 @@ export const exploreData = {
   subscription: {
     title: "Receive the latest blogs straight to your inbox.",
     socialLinks: [
-      { icon: "/social/instagram-color.svg", href: "#" },
-      { icon: "/social/twitter-color.svg", href: "#" },
-      { icon: "/social/linkedin-color.svg", href: "#" },
-      { icon: "/social/facebook-color.svg", href: "#" },
-      { icon: "/social/youtube-color.svg", href: "#" },
-      { icon: "/social/discord-color.svg", href: "#" },
+      { icon: "/social/instagram.svg", href: "#" },
+      { icon: "/social/twitter.svg", href: "#" },
+      { icon: "/social/linkedin.svg", href: "#" },
+      { icon: "/social/facebook.svg", href: "#" },
+      { icon: "/social/youtube.svg", href: "#" },
+      { icon: "/social/discord.svg", href: "#" },
     ],
   },
 };

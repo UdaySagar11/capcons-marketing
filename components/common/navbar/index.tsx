@@ -11,7 +11,10 @@ import { NavbarProps } from "@/@types";
 const defaultProps: NavbarProps = {
     logo: {
         url: "/",
-        src: "/logo-light.png",
+        src: {
+            desktop: "/logo-frame.png",
+            mobile: "/logo-mobile.png",
+        },
         alt: "capcons",
         title: "CapCons.",
     },
@@ -22,28 +25,28 @@ const defaultProps: NavbarProps = {
             url: "#",
             items: [
                 {
-                    title: "Insights",
+                    title: "Blogs",
                     description: "The latest industry news, updates and info",
                     icon: (
                         <RiBookLine className="lg:size-7 size-5 text-[#FF9C00] shrink-0" />
                     ),
-                    url: "/news",
+                    url: "/blogs",
                 },
                 {
-                    title: "Podcasts",
-                    description: " Get up and running on new features and techniques",
+                    title: "How to videos",
+                    description: "Get up and running on new features and techniques",
                     icon: (
                         <CgPlayButtonO className="lg:size-7 size-5 text-[#FF9C00] shrink-0" />
                     ),
-                    url: "/podcasts",
+                    url: "/videos",
                 },
                 {
-                    title: "Challenges",
-                    description: "Learn how our customers are making big changes.",
+                    title: "Events",
+                    description: "Learn how our customers are making big changes",
                     icon: (
                         <SlEnergy className="lg:size-7 size-5 text-[#FF9C00] shrink-0" />
                     ),
-                    url: "challenges",
+                    url: "/events",
                 },
                 {
                     title: "StormNorms - D2C Incubator",

@@ -3,7 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import { Icons } from '@/lib/icons'
 import { ContactForm } from './_components/contact-form'
-import { Banner } from './_components/banner'
+import { Banner } from '@/components/common/banner'
 import { defaultMetadata, siteConfig } from '@/lib/metadata'
 import { GetStarted } from '../_components/get-started'
 import RoundedBottom from '@/components/common/rounded-bottom'
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 const ContactPage = () => {
   return (
     <div className='bg-transparent '>
-      <Banner />
+      <Banner title="Contact Us" description="Got questions? We’re just a message away." />
       <div className="relative bg-white px-4 pb-0 container sm:px-6 lg:px-8 py-6 sm:py-12 rounded-3xl ">
         <div className="gap-8 lg:gap-10 grid lg:grid-cols-2 py-8 sm:py-12">
           <div className="space-y-4 md:space-y-6">
