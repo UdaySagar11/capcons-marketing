@@ -45,7 +45,7 @@ export default function BlogsListing() {
 
   return (
     <div className="bg-[#39089D] ">
-      <div className="bg-white py-4 md:py-8 lg:py-16 rounded-b-[30px] md:rounded-b-[50px]">
+      <div className="bg-white py-4 md:py-8 lg:py-16 rounded-b-[30px] md:rounded-b-[50px] px-2 sm:px-0">
         <div className="container mx-auto space-y-8 md:space-y-20 px-2 sm:px-4 md:px-8 lg:px-0">
           {isLatestPending ? (
             <BlogHighlightSkeleton />

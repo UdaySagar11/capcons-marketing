@@ -191,21 +191,25 @@ export const subscriptionForm = {
           "10 Habits That Will Change Your Live for the Better If envy and jealousy are impacting your friendships",
         date: "2 minute read",
         isNew: true,
+        slug: "1",
       },
       {
         title:
           "10 Habits That Will Change Your Live for the Better If envy and jealousy are impacting your friendships",
         date: "2 minute read",
+        slug: "1",
       },
       {
         title:
           "10 Habits That Will Change Your Live for the Better If envy and jealousy are impacting your friendships",
         date: "2 minute read",
+        slug: "1",
       },
       {
         title:
           "10 Habits That Will Change Your Live for the Better If envy and jealousy are impacting your friendships",
         date: "2 minute read",
+        slug: "1",
       },
     ],
   },

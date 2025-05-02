@@ -8,7 +8,6 @@ import {
   FormControl,
   FormField,
   FormItem,
-  FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { motion } from "framer-motion"
@@ -28,6 +27,10 @@ export const GetStartedForm = () => {
   })
 
   function onSubmit(data: GetStartedFormValues) {
+    if (form.formState.errors.email) {
+      toast.error(form.formState.errors.email.message)
+      return
+    }
     startTransition(async () => {
       const result = await submitGetStarted(data)
       if (result.error) {
@@ -54,7 +57,6 @@ export const GetStartedForm = () => {
                   {...field}
                 />
               </FormControl>
-              <FormMessage className="absolute text-red-500 text-xs mt-1" />
             </FormItem>
           )}
         />

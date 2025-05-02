@@ -261,7 +261,7 @@ const BlogComments = () => {
 
   return (
     <div className="w-full max-w-3xl mt-8 sm:mt-16 mb-6 sm:mb-10">
-      <h2 className="mb-4 md:mb-0 font-bold text-[#160925] text-xl md:text-2xl text-left">Reviews</h2>
+      <h2 className="mb-4 md:mb-8 font-bold text-[#160925] text-xl md:text-2xl text-left">Reviews</h2>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handlePostReview)} className="flex items-center gap-2 sm:gap-4 mb-6 sm:mb-10">
           <Avatar className="w-8 h-8 sm:w-10 sm:h-10">

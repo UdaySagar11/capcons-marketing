@@ -15,6 +15,7 @@ import { useTransition } from "react"
 import { toast } from "sonner"
 import { subscriptionForm } from "@/config/mock/blogs"
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
+import { useRouter } from "next/navigation"
 
 const latestPosts: BlogPost[] = subscriptionForm.latestPosts.posts
 
@@ -46,6 +47,7 @@ export const BlogSidebar = () => {
       form.reset()
     })
   }
+  const router = useRouter()
 
   return (
     <div className="space-y-6">
@@ -120,11 +122,12 @@ export const BlogSidebar = () => {
             <div
               key={i}
               className={cn(
-                "group flex gap-8 justify-between rounded-xl bg-[#F9F9F9] p-4",
+                "group flex gap-8 justify-between rounded-xl bg-[#F9F9F9] p-4 cursor-pointer",
                 post.isNew && "bg-[#160925] text-white"
               )}
+              onClick={() => router.push(`/blogs/${post.slug}`)}
             >
-              <div className="flex-1">
+              <div className="flex-1 cursor-pointer">
                 <h4 className={cn("font-medium text-sm", post.isNew ? "text-white" : "text-[#4A4A4A]")}>{post.title}</h4>
                 <div className="flex justify-between items-center gap-4 mt-2 text-[#A5A5A5] text-xs">
                   <span>Today</span>

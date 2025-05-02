@@ -24,7 +24,7 @@ export const LatestArticles = ({ blogs, title = "Latest Articles" }: LatestArtic
   };
 
   return (
-    <div className="mx-auto w-full flex flex-col px-2 sm:px-0">
+    <div className="mx-auto w-full flex flex-col ">
       <SectionHeader title={title} />
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"

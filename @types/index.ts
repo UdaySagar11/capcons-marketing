@@ -89,6 +89,7 @@ export interface BlogPost {
   title: string;
   date: string;
   isNew?: boolean;
+  slug: string;
 }
 
 export interface JobTiming {
