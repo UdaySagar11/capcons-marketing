@@ -16,7 +16,7 @@ const MobileNewsCard = ({ item, index }: { item: typeof NEWS_ITEMS[0], index: nu
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.4 + index * 0.2 }}
       whileHover={{ y: -5 }}
-      onClick={() => router.push(`/blogs/${item.slug}`)}
+      onClick={() => router.push(`/media`)}
       className="flex flex-row shadow-md mb-2 rounded-lg overflow-hidden cursor-pointer w-full"
     >
       <motion.div className="relative flex-shrink-0 rounded-2xl w-2/5 h-32">
@@ -44,7 +44,7 @@ const DesktopNewsCard = ({ item, index }: { item: typeof NEWS_ITEMS[0], index: n
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: 0.4 + index * 0.2 }}
       whileHover={{ y: -5 }}
-      onClick={() => router.push(`/blogs/${item.slug}`)}
+      onClick={() => router.push(`/media`)}
       className="flex flex-col shadow-md mb-2 rounded-lg  overflow-hidden cursor-pointer"
     >
       <motion.div className="relative flex-shrink-0 rounded-2xl w-full h-40 xl:h-42">
@@ -83,7 +83,7 @@ export const MediaCoverage = () => {
             To know more about us, visit our press page for the latest headlines about Capcons, Company announcements <br /> and product updates.
           </p>
           <Link
-            href="/press"
+            href="/media"
             className="px-0 text-[#39089D] flex items-center gap-2"
           >
             See news and press

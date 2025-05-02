@@ -8,8 +8,8 @@ export default function PrivacyPage() {
       return (
             <div className="font-montserrat overflow-x-hidden">
                   <Banner title="Privacy Policy" description="Your privacy, our priority. We protect your data every step of the way." subtitle="Last Updated  23rd May, 2024" />
-                  <div className="relative p-4  pb-0">
-                        <div className="mt-8 md:mt-16 px-4 md:px-0 container max-w-6xl">
+                  <div className="">
+                        <div className="mt-8 md:mt-16  md:px-0 container max-w-6xl">
                               <div className="mx-auto space-y-12 text-[#400E4D]">
                                     <section>
                                           <h2 className="text-lg md:text-xl font-semibold mb-4">Welcome to Capcons!</h2>
@@ -200,7 +200,7 @@ export default function PrivacyPage() {
                                     </section>
                               </div>
                         </div>
-                        <div className="mt-8 md:mt-16 px-4 md:px-0 container">
+                        <div className="mt-8 md:mt-16  md:px-0 container">
                               <GetStarted />
                         </div>
                   </div>

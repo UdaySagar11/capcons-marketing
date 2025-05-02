@@ -11,8 +11,8 @@ export default function TermPage() {
                 description="By accessing our website, you are agreeing to be bound by these terms of service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable laws."
                 subtitle="Last Updated  23rd May, 2024"
             />
-            <div className="relative p-4 pb-0">
-                <div className="mt-8 md:mt-16 px-4 md:px-0 container max-w-6xl">
+            <div className="relative pb-0">
+                <div className="mt-8 md:mt-16 md:px-0 container max-w-6xl">
 
                     <article className="  prose-a:text-primary space-y-12 text-[#400E4D] ">
                         <h2 className="text-lg md:text-xl font-semibold mb-4">Capcons!</h2>
@@ -474,7 +474,7 @@ export default function TermPage() {
                         </section>
                     </article>
                 </div>
-                <div className="mt-8 md:mt-16 px-4 md:px-0 container">
+                <div className="mt-8 md:mt-16 md:px-0 container">
                     <GetStarted />
                 </div>
             </div>

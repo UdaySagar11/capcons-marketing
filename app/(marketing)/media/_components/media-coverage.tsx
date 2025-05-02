@@ -36,16 +36,16 @@ export const MediaCoverage = () => {
         {mediaCoverage.map((coverage, index) => (
           <div
             key={index}
-            className="grid grid-cols-4 gap-4 bg-white p-2 sm:p-6 border-b"
+            className="grid grid-cols-5 bg-white p-2 sm:p-6 border-b"
           >
-            <div className="text-left">
+            <div className="text-left max-sm:col-span-2">
               <h3 className="font-bold text-sm">{coverage.title}</h3>
               <div className="text-sm text-black mt-1">{coverage.date}</div>
             </div>
-            <div className="flex items-center text-black font-bold text-sm sm:text-lg col-span-3 sm:col-span-2">
+            <div className="flex items-center text-black font-bold text-sm sm:text-lg col-span-3">
               <span>{coverage.description}</span>
             </div>
-            <div className="flex justify-end max-sm:col-span-4">
+            <div className="flex justify-end max-sm:col-span-5 sm:col-span-1">
               <Link
                 href={coverage.link}
                 className="px-3 sm:px-4 py-1.5 sm:py-2 flex items-center gap-2 text-center text-xs sm:text-sm shrink-0 text-[#39089D]"
