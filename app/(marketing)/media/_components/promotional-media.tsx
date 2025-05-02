@@ -33,7 +33,7 @@ export const PromotionalMedia = () => {
   return (
     <section className="w-full max-w-5xl mx-auto">
       <SectionHeader title="From Promotional Media" />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         {mediaLogos.map((logo, index) => (
           <div key={index} className="bg-white rounded-lg p-6 flex items-center justify-center shadow-sm">
             <Image
