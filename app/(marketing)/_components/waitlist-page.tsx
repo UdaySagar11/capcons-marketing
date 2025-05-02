@@ -42,30 +42,40 @@ const Waitlist = () => {
           </P>
         </div>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="flex bg-[#D9D9D91A] border border-white/20 rounded-full w-full max-w-[500px]">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+            <div className="flex bg-[#D9D9D91A] border border-white/20 rounded-full w-full max-w-[500px]">
+              <FormField
+                control={form.control}
+                name="email"
+                render={({ field }) => (
+                  <FormItem className="flex-1">
+                    <FormControl>
+                      <Input
+                        placeholder="Email Address"
+                        className="bg-transparent border-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0 rounded-full placeholder:text-[#A7A7A7] border-[#FFFFFF] text-white"
+                        {...field}
+                      />
+                    </FormControl>
+                  </FormItem>
+                )}
+              />
+              <Button
+                type="submit"
+                variant="primary"
+                className="bg-[#C6F806] hover:bg-[#C6F806]/90 text-[#39089D] hover:text-[#39089D]/90 rounded-full px-4 md:px-6 font-bold"
+              >
+                Submit
+              </Button>
+            </div>
             <FormField
               control={form.control}
               name="email"
-              render={({ field }) => (
-                <FormItem className="flex-1">
-                  <FormControl>
-                    <Input
-                      placeholder="Email Address"
-                      className="bg-transparent border-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0 text-black rounded-full placeholder:text-[#A7A7A7] border-[#FFFFFF]"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage className="text-red-400" />
+              render={() => (
+                <FormItem>
+                  <FormMessage className="text-red-400 pl-4" />
                 </FormItem>
               )}
             />
-            <Button
-              type="submit"
-              variant="primary"
-              className="bg-[#C6F806] hover:bg-[#C6F806]/90 text-[#39089D] hover:text-[#39089D]/90 rounded-full px-4 md:px-6 font-bold"
-            >
-              Submit
-            </Button>
           </form>
         </Form>
       </div>

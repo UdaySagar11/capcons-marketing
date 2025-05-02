@@ -3,7 +3,7 @@ import { VALUES } from "@/config/mock/about-us"
 
 export const ImportantToUsSection = () => {
   return (
-    <div className="mx-4 sm:mx-6 md:mx-20 sm:px-4 lg:px-8 md:pt-16 ">
+    <div className="mx-0 sm:mx-6 md:mx-20 sm:px-4 lg:px-8 md:pt-16 ">
       <div className="mb-12 text-center">
         <div className="font-bold text-black text-2xl md:text-4xl space-y-2 sm:space-y-4">
           <div>
