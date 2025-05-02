@@ -10,8 +10,8 @@ export const BlogRelated = ({ blogs }: { blogs: RelatedBlog[] }) => {
 
   return (
     <div className="my-8 md:my-16">
-      <div className="flex md:flex-row flex-col md:justify-between items-center md:items-center mb-6 md:mb-8">
-        <h2 className="mb-4 md:mb-0 font-bold text-[#160925] text-xl md:text-2xl md:text-left text-center">You May also like</h2>
+      <div className="flex md:flex-row flex-col md:justify-between items-center md:items-center md:mb-8">
+        <h2 className="mb-4 md:mb-0 font-bold text-[#160925] text-lg md:text-2xl md:text-left text-center">You May also like</h2>
         <Button
           className="hidden md:flex bg-[#C6F806] hover:bg-[#C6F806]/90 text-[#160925] rounded-full"
         >
@@ -32,10 +32,10 @@ export const BlogRelated = ({ blogs }: { blogs: RelatedBlog[] }) => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
               <div className="right-0 bottom-0 left-0 absolute p-3 md:p-4 md:px-6">
-                <h3 className="text-white text-base md:text-base leading-tight">
+                <h3 className="text-white text-sm md:text-base leading-tight">
                   {blog.title}
                 </h3>
-                <div className="flex items-center gap-2 text-sm text-white/80 mt-2">
+                <div className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm text-white/80 mt-1.5 md:mt-2">
                   <span>{blog.author_name}</span>
                   <span>•</span>
                   <span>{format(new Date(blog.publication_date), 'MMM d, yyyy')}</span>

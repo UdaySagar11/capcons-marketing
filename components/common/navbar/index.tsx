@@ -78,7 +78,7 @@ const Navbar = () => {
     const isAboutUsPage = pathname === "/about-us";
 
     return (
-        <section className={`h-[80px] ${isAboutUsPage ? "bg-[#1c0c42] opacity-80 fixed top-0 left-0 right-0 z-50" : ""}`}>
+        <section className={`h-[80px] ${isAboutUsPage ? "bg-[#1c0c42]/80 z-50 absolute top-0 left-0 right-0" : ""}`}>
             <div className="container w-full px-4 md:px-8 lg:px-0 h-full">
                 <TopNavbar {...defaultProps} />
                 <SideNavbar {...defaultProps} />

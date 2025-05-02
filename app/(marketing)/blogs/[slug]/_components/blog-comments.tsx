@@ -65,33 +65,33 @@ function CommentItem({
 }: CommentItemProps & { showReplyForm?: boolean; onReplyClick?: () => void }) {
   return (
     <div className={`bg-transparent rounded-xl p-0`}>
-      <div className="flex items-start gap-4">
-        <Avatar>
+      <div className="flex items-start gap-2 sm:gap-4">
+        <Avatar className="w-8 h-8 sm:w-10 sm:h-10">
           <AvatarImage src={comment.user.avatar} alt={comment.user.name} />
           <AvatarFallback>{comment.user.name[0]}</AvatarFallback>
         </Avatar>
         <div className="flex-1">
-          <div className="flex items-center gap-2">
-            <span className="font-bold text-lg text-[#2E134D]">{comment.user.name}</span>
-            <span className="text-sm text-[#A5A5A5]">{comment.time}</span>
+          <div className="flex items-center gap-1 sm:gap-2">
+            <span className="font-bold text-base sm:text-lg text-[#2E134D]">{comment.user.name}</span>
+            <span className="text-xs sm:text-sm text-[#A5A5A5]">{comment.time}</span>
           </div>
-          <div className="flex items-start gap-2 justify-between">
-            <div className="text-sm mt-1 mb-2 text-[#39089D] max-w-[calc(100%-48px)] break-words whitespace-pre-wrap">{comment.text}</div>
+          <div className="flex items-start gap-1 sm:gap-2 justify-between">
+            <div className="text-xs sm:text-sm mt-1 mb-2 text-[#39089D] max-w-[calc(100%-48px)] break-words whitespace-pre-wrap">{comment.text}</div>
             <span
-              className="flex items-center justify-center text-[#FF9C00] hover:bg-[#FF9C00]/10 rounded-full p-2 ml-2 cursor-pointer shrink-0"
+              className="flex items-center justify-center text-[#FF9C00] hover:bg-[#FF9C00]/10 rounded-full p-1 sm:p-2 ml-1 sm:ml-2 cursor-pointer shrink-0"
               onClick={() => onLike(comment.id)}
             >
-              <ThumbsUp className="w-4 h-4" />
+              <ThumbsUp className="w-3 h-3 sm:w-4 sm:h-4" />
             </span>
           </div>
-          <div className="flex items-center gap-6 text-sm mb-2">
+          <div className="flex items-center gap-3 sm:gap-6 text-xs sm:text-sm mb-2">
             <span className="text-[#A5A5A5]">{comment.likes} Likes</span>
             {!isReply && comment.comments > 0 && (
               <span className="text-[#A5A5A5]">{comment.comments} Comments</span>
             )}
             {!isReply && (
               <button
-                className="text-[#39089D] text-sm font-medium ml-2 hover:underline focus:outline-none"
+                className="text-[#39089D] text-xs sm:text-sm font-medium ml-1 sm:ml-2 hover:underline focus:outline-none"
                 onClick={onReplyClick}
               >
                 Reply
@@ -100,20 +100,20 @@ function CommentItem({
           </div>
           {children}
           {!isReply && showReplyForm && (
-            <div className="flex items-center gap-3 mt-4">
-              <Avatar>
+            <div className="flex items-center gap-2 sm:gap-3 mt-3 sm:mt-4">
+              <Avatar className="w-8 h-8 sm:w-10 sm:h-10">
                 <AvatarImage src="https://randomuser.me/api/portraits/men/1.jpg" alt="User" />
                 <AvatarFallback>U</AvatarFallback>
               </Avatar>
               <Input
-                className="flex-1 bg-neutral-200 dark:bg-neutral-800 text-base px-4 py-2 rounded-full border border-[#39089D] shadow-none focus:ring-0 focus:outline-none text-[#2E134D] placeholder-[#A5A5A5]"
+                className="flex-1 bg-neutral-200 dark:bg-neutral-800 text-xs sm:text-base px-3 sm:px-4 py-1 sm:py-2 rounded-full border border-[#39089D] shadow-none focus:ring-0 focus:outline-none text-[#2E134D] placeholder-[#A5A5A5]"
                 placeholder="Add comment"
                 value={replyInput[comment.id] || ''}
                 onChange={e => setReplyInput(comment.id, e.target.value)}
                 onKeyDown={e => { if (e.key === 'Enter') onAddReply(comment.id); }}
               />
               <Button
-                className="bg-[#39089D] text-white rounded-full px-4 py-2"
+                className="bg-[#39089D] text-white rounded-full px-3 sm:px-4 py-1 sm:py-2 text-xs sm:text-sm"
                 onClick={() => onAddReply(comment.id)}
               >
                 Add
@@ -260,11 +260,11 @@ const BlogComments = () => {
     ));
 
   return (
-    <div className="w-full max-w-3xl mt-16 mb-10">
-      <h2 className="text-3xl font-bold mb-6 text-[#2E134D]">Reviews</h2>
+    <div className="w-full max-w-3xl mt-8 sm:mt-16 mb-6 sm:mb-10">
+      <h2 className="mb-4 md:mb-0 font-bold text-[#160925] text-xl md:text-2xl text-left">Reviews</h2>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(handlePostReview)} className="flex items-center gap-4 mb-10">
-          <Avatar>
+        <form onSubmit={form.handleSubmit(handlePostReview)} className="flex items-center gap-2 sm:gap-4 mb-6 sm:mb-10">
+          <Avatar className="w-8 h-8 sm:w-10 sm:h-10">
             <AvatarImage src="https://randomuser.me/api/portraits/men/1.jpg" alt="User" />
             <AvatarFallback>U</AvatarFallback>
           </Avatar>
@@ -275,7 +275,7 @@ const BlogComments = () => {
               <FormItem className="flex-1">
                 <FormControl>
                   <Input
-                    className="bg-white dark:bg-black text-lg px-6 py-4 rounded-full border border-[#39089D] shadow-none focus:ring-0 focus:outline-none text-[#2E134D] placeholder-[#A5A5A5]"
+                    className="bg-white dark:bg-black text-base sm:text-lg px-4 sm:px-6 py-2 sm:py-4 rounded-full border border-[#39089D] shadow-none focus:ring-0 focus:outline-none text-[#2E134D] placeholder-[#A5A5A5]"
                     placeholder="Write your review..."
                     {...field}
                   />
@@ -286,15 +286,15 @@ const BlogComments = () => {
           />
           <Button
             type="submit"
-            className="bg-lime-300 hover:bg-lime-400 text-black rounded-full px-4 md:px-8"
+            className="bg-lime-300 hover:bg-lime-400 text-black rounded-full px-3 sm:px-8 text-sm sm:text-base"
           >
             Post
           </Button>
         </form>
       </Form>
-      <div className="relative flex gap-2 mb-6">
+      <div className="relative flex gap-2 mb-4 sm:mb-6">
         <Select value={sort} onValueChange={(value) => { setSort(value); setCurrentPage(1); }}>
-          <SelectTrigger className="text-xl font-semibold text-[#2E134D] focus:outline-none border-none shadow-none px-0">
+          <SelectTrigger className="text-lg sm:text-xl font-semibold text-[#2E134D] focus:outline-none border-none shadow-none px-0">
             <SelectValue placeholder="Select sort" />
           </SelectTrigger>
           <SelectContent>
@@ -307,9 +307,9 @@ const BlogComments = () => {
         </Select>
       </div>
       {reviews.length === 0 ? (
-        <div className="text-center text-gray-500">No reviews yet</div>
+        <div className="text-center text-gray-500 text-sm sm:text-base">No reviews yet</div>
       ) : (
-        <div className="space-y-10">
+        <div className="space-y-6 sm:space-y-10">
           {paginatedReviews.map((r) => (
             <CommentItem
               key={r.id}
@@ -327,22 +327,22 @@ const BlogComments = () => {
         </div>
       )}
       {totalPages > 1 && (
-        <div className="flex items-center gap-4 mt-12">
+        <div className="flex items-center gap-2 sm:gap-4 mt-8 sm:mt-12">
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
             <button
               key={n}
               onClick={() => setCurrentPage(n)}
-              className={`w-8 h-8 rounded-full flex items-center justify-center text-lg font-semibold ${n === currentPage ? 'bg-[#39089D] text-white' : 'bg-transparent text-[#A5A5A5]'}`}
+              className={`w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-base sm:text-lg font-semibold ${n === currentPage ? 'bg-[#39089D] text-white' : 'bg-transparent text-[#A5A5A5]'}`}
             >
               {n}
             </button>
           ))}
           <button
-            className="w-8 h-8 rounded-full flex items-center justify-center text-lg font-semibold bg-transparent text-[#A5A5A5] border border-[#A5A5A5]"
+            className="w-6 h-6 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-base sm:text-lg font-semibold bg-transparent text-[#A5A5A5] border border-[#A5A5A5]"
             onClick={() => setCurrentPage((p) => (p < totalPages ? p + 1 : p))}
             disabled={currentPage === totalPages}
           >
-            <ChevronRight className="w-4 h-4" />
+            <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4" />
           </button>
         </div>
       )}

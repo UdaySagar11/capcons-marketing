@@ -1,13 +1,37 @@
 "use client"
 
-import React, { useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import { Button } from '@/components/common/ui/Button'
 import { Input } from '@/components/ui/input'
 import { H1, P } from '@/components/typography'
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import * as z from "zod"
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form"
+
+const formSchema = z.object({
+  email: z.string().email("Please enter a valid email address"),
+})
 
 const Waitlist = () => {
-  const [email, setEmail] = useState('')
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      email: "",
+    },
+  })
+
+  function onSubmit(values: z.infer<typeof formSchema>) {
+    console.log(values)
+  }
+
   return (
     <div className='bg-[#39089D] flex flex-col md:flex-row justify-start items-center relative min-h-[calc(100vh-80px)] py-8 md:py-0'>
       <div className="flex flex-col justify-center px-4 gap-8 container z-10 py-20">
@@ -17,18 +41,33 @@ const Waitlist = () => {
             Be among the first to access Capcons and shape the future of creator-led communities.
           </P>
         </div>
-        <div className="flex bg-[#D9D9D91A] border border-white/20 rounded-full w-full max-w-[500px]">
-          <Input
-            type="text"
-            placeholder="Email Address"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="bg-transparent border-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0 text-black rounded-full placeholder:text-[#A7A7A7] border-[#FFFFFF]"
-          />
-          <Button variant="primary" className="bg-[#C6F806] hover:bg-[#C6F806]/90 text-[#39089D] hover:text-[#39089D]/90 rounded-full px-2 sm:px-4 md:px-6 font-bold">
-            Submit
-          </Button>
-        </div>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="flex bg-[#D9D9D91A] border border-white/20 rounded-full w-full max-w-[500px]">
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem className="flex-1">
+                  <FormControl>
+                    <Input
+                      placeholder="Email Address"
+                      className="bg-transparent border-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0 text-black rounded-full placeholder:text-[#A7A7A7] border-[#FFFFFF]"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-red-400" />
+                </FormItem>
+              )}
+            />
+            <Button
+              type="submit"
+              variant="primary"
+              className="bg-[#C6F806] hover:bg-[#C6F806]/90 text-[#39089D] hover:text-[#39089D]/90 rounded-full px-4 md:px-6 font-bold"
+            >
+              Submit
+            </Button>
+          </form>
+        </Form>
       </div>
       <div className="absolute bottom-0 right-0 w-full md:w-[55%] h-[40vh] md:h-auto">
         <Image

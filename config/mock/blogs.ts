@@ -45,7 +45,7 @@ const relatedBlogs = [
     author_name: "Joanna Wellick",
     publication_date: "2018-06-28T00:00:00.000Z",
   },
-]
+];
 
 export const blogPosts: Blog[] = [
   {
@@ -166,15 +166,7 @@ const dummyBlog: Blog = {
   related_blogs: relatedBlogs,
 };
 
-export const allBlogs: Blog[] = [
-  ...blogPosts,
-  ...Array(7)
-    .fill(dummyBlog)
-    .map((blog, index) => ({
-      ...blog,
-      slug: `${blog.slug}-${index + 1}`,
-    })),
-];
+export const allBlogs: Blog[] = [...blogPosts, ...Array(7).fill(dummyBlog)];
 
 export const subscriptionForm = {
   title: "Follow Us",
