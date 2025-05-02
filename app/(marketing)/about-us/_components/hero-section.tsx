@@ -1,9 +1,11 @@
+import Image from "next/image"
+
 export const HeroSection = () => {
   return (
-    <div className="relative w-full h-[70vh] md:h-[90vh]">
-      <div className="absolute inset-0 bg-gradient-to-b from-[#39089D] to-violet-600" />
+    <div className="relative w-full h-[70vh] md:h-[100vh]">
+      <div className="absolute inset-0 bg-gradient-to-b from-[#39089D] to-violet-900" />
 
-      {/* <div className="absolute inset-0">
+      <div className="absolute inset-0">
         <Image
           alt="Wave Pattern"
           className="w-full h-full object-cover"
@@ -11,7 +13,7 @@ export const HeroSection = () => {
           priority
           src="/wave-pattern.png"
         />
-      </div> */}
+      </div>
 
       <div className="z-10 relative flex flex-col justify-center items-center gap-3 md:gap-4 px-4 sm:px-6 lg:px-8 pb-20 md:pb-28 h-full">
         <button className="bg-[#86868645] px-3 md:px-4 py-1.5 md:py-2 rounded-full font-semibold text-white text-xs md:text-base">

@@ -7,6 +7,7 @@ import { CgPlayButtonO } from "react-icons/cg";
 import { SlEnergy } from "react-icons/sl";
 import { Trees } from "lucide-react";
 import { NavbarProps } from "@/@types";
+import { usePathname } from "next/navigation";
 
 const defaultProps: NavbarProps = {
     logo: {
@@ -73,8 +74,11 @@ const defaultProps: NavbarProps = {
 };
 
 const Navbar = () => {
+    const pathname = usePathname();
+    const isAboutUsPage = pathname === "/about-us";
+
     return (
-        <section className="h-[80px]">
+        <section className={`h-[80px] ${isAboutUsPage ? "bg-[#1c0c42] opacity-80 fixed top-0 left-0 right-0 z-50" : ""}`}>
             <div className="container w-full px-4 md:px-8 lg:px-0 h-full">
                 <TopNavbar {...defaultProps} />
                 <SideNavbar {...defaultProps} />
