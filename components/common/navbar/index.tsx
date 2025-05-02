@@ -38,7 +38,7 @@ const defaultProps: NavbarProps = {
                     icon: (
                         <CgPlayButtonO className="lg:size-7 size-5 text-[#FF9C00] shrink-0" />
                     ),
-                    url: "/videos",
+                    url: "/how-to-videos",
                 },
                 {
                     title: "Events",
@@ -59,7 +59,7 @@ const defaultProps: NavbarProps = {
         },
         {
             title: "Pricing",
-            url: "#",
+            url: "/pricing",
         },
         {
             title: "Blog",
