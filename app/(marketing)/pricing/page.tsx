@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { Check, Cpu, Sparkles } from "lucide-react"
+import { Check } from "lucide-react"
 import {
   Tabs,
   TabsList,
@@ -9,18 +9,18 @@ import {
 } from "@/components/ui/tabs"
 import { Icons } from "@/lib/icons"
 import RoundedBottom from "@/components/common/rounded-bottom"
-import { pricingData, featureCategories } from "@/config/mock/pricing"
+import { pricingData, featureCategories, featureAddons } from "@/config/mock/pricing"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { useRouter } from "next/navigation"
-import { PlanDetails } from "@/@types"
 import NumberFlow from '@number-flow/react'
+import PricingTable from "./_components/pricing-table"
 
 type BillingPeriod = keyof typeof pricingData.plans[number]["billingPeriod"]
 type CurrencyType = "INR" | "USD"
 
 type Plan = typeof pricingData.plans[number]
-type PlanId = "basic" | "premium" | "enterprise"
+type PlanId = "basic" | "premium" | "enterprise" | "custom"
 
 const typedPricingData = pricingData as { plans: Plan[] }
 
@@ -33,7 +33,7 @@ export default function PricingPage() {
 
   return (
     <div className="font-montserrat">
-      <div className="mx-auto px-4 pt-28 max-w-6xl sm:px-6">
+      <div className="mx-auto px-4 pt-28 container sm:px-6">
         <h1 className="mb-4 md:mb-10 font-semibold text-[#2E134D] text-lg sm:text-2xl md:text-4xl text-center">Upgrade to Premium</h1>
 
         <div className="flex flex-col items-center gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8 md:mb-12">
@@ -72,7 +72,7 @@ export default function PricingPage() {
           </div>
         </div>
 
-        <div className="flex flex-wrap justify-center items-stretch gap-3 sm:gap-4 md:gap-6 mx-auto mb-8 sm:mb-12 md:mb-16 max-w-5xl">
+        <div className="flex flex-wrap justify-center items-stretch gap-3 sm:gap-4 md:gap-6 mx-auto mb-8 sm:mb-12 md:mb-16">
           {typedPricingData.plans.map((plan) => (
             <div
               key={plan.id}
@@ -97,29 +97,41 @@ export default function PricingPage() {
               <div className="mb-3 sm:mb-4 md:mb-6">
                 <h3 className="mb-1.5 sm:mb-2 font-medium text-sm sm:text-base md:text-lg">{plan.name}</h3>
                 <div className="flex items-baseline">
-                  <span className="font-bold text-[#39089D] text-xl sm:text-2xl md:text-3xl">
+                  <span className="font-bold text-[#39089D] text-xl sm:text-2xl md:text-3xl flex items-baseline">
+                    {isNaN(parseFloat(plan.price[selectedBillingPeriod][selectedCurrency])) ?
+                      `${selectedCurrency === 'INR' ? '₹' : '$'}--,--` :
+                      <div className="">
+                        <NumberFlow
+                          value={parseFloat(plan.price[selectedBillingPeriod][selectedCurrency])}
+                          format={{
+                            currency: selectedCurrency,
+                            style: "currency",
+                            currencySign: "standard",
+                            currencyDisplay: "narrowSymbol"
+                          }}
+                        />
+                      </div>
+                    }
+                    <span className="text-xs sm:text-sm font-medium ml-1">
+                      {selectedBillingPeriod === "annual" ? "/Year" : "/Month"}
+                    </span>
+                  </span>
+                </div>
+                <p className="text-[10px] text-black sm:text-xs md:text-sm font-medium">
+                  {isNaN(selectedBillingPeriod === "annual" ?
+                    parseFloat(plan.price[selectedBillingPeriod][selectedCurrency]) / 12 :
+                    parseFloat(plan.price[selectedBillingPeriod][selectedCurrency]) * 12) ?
+                    `${selectedCurrency === 'INR' ? '₹' : '$'}--,--` :
                     <NumberFlow
-                      value={parseFloat(plan.price[selectedBillingPeriod][selectedCurrency])}
+                      value={selectedBillingPeriod === "annual" ? parseFloat(plan.price[selectedBillingPeriod][selectedCurrency]) / 12 : parseFloat(plan.price[selectedBillingPeriod][selectedCurrency]) * 12}
                       format={{
                         currency: selectedCurrency,
                         style: "currency",
                         currencySign: "standard",
                         currencyDisplay: "narrowSymbol"
                       }}
-                      suffix={selectedBillingPeriod === "annual" ? "/Year" : "/Month"}
                     />
-                  </span>
-                </div>
-                <p className="text-[10px] text-black sm:text-xs md:text-sm font-medium">
-                  <NumberFlow
-                    value={selectedBillingPeriod === "annual" ? parseFloat(plan.price[selectedBillingPeriod][selectedCurrency]) / 12 : parseFloat(plan.price[selectedBillingPeriod][selectedCurrency]) * 12}
-                    format={{
-                      currency: selectedCurrency,
-                      style: "currency",
-                      currencySign: "standard",
-                      currencyDisplay: "narrowSymbol"
-                    }}
-                  />
+                  }
                   {selectedBillingPeriod === "annual" ? " billed monthly" : " billed annually"}
                 </p>
               </div>
@@ -133,85 +145,33 @@ export default function PricingPage() {
               </ul>
               <div className="flex justify-center mt-4 sm:mt-6 md:mt-8">
                 <Button
-                  onClick={() => router.push(`/pricing/confirm?plan=${plan.id}&billingPeriod=${selectedBillingPeriod}&currency=${selectedCurrency}`)}
-                  className="bg-[#39089D] hover:bg-[#2E134D] px-4 sm:px-6 md:px-8 py-1 sm:py-1.5 md:py-2 h-7 sm:h-8 md:h-10 rounded-full text-white text-[10px] sm:text-xs md:text-base">Subscribe</Button>
+                  onClick={() => plan.id === 'custom'
+                    ? router.push('/contact-us')
+                    : router.push(`/pricing/confirm?plan=${plan.id}&billingPeriod=${selectedBillingPeriod}&currency=${selectedCurrency}`)}
+                  className="bg-[#39089D] hover:bg-[#2E134D] px-4 sm:px-6 md:px-8 py-1 sm:py-1.5 md:py-2 h-7 sm:h-8 md:h-10 rounded-full text-white text-[10px] sm:text-xs md:text-base">
+                  {plan.id === 'custom' ? 'Contact Us' : 'Subscribe'}
+                </Button>
               </div>
             </div>
           ))}
         </div>
 
-        <section className="py-8 md:py-16">
-          <div className="mx-auto max-w-5xl">
+        <section className="py-8 md:py-16 ">
+          <div className="mx-auto px-4 ">
             <h2 className="font-medium text-base sm:text-lg md:text-xl text-[#39089D] mb-6 md:mb-8">Compare tiers & features</h2>
 
             <div className="w-full overflow-x-auto">
-              <table className="w-full min-w-[800px] border-separate border-spacing-x-0">
-                <thead className="bg-white sticky top-0">
-                  <tr className="*:py-4 *:text-left *:font-medium">
-                    <th className="w-1/4 min-w-[200px]"></th>
-                    {typedPricingData.plans.map((plan) => (
-                      <th key={plan.id} className={cn(
-                        "space-y-3 px-4 w-1/4 min-w-[200px]"
-                      )}>
-                        <span className="block text-[#2E134D] font-bold text-sm sm:text-base">{plan.name}</span>
-                      </th>
-                    ))}
-                  </tr>
-                </thead>
-                <tbody className="text-sm">
-                  {Object.entries(featureCategories).map(([category, featureKeys], sectionIndex) => (
-                    <>
-                      <tr key={`category-${sectionIndex}`} className="*:py-3">
-                        <td className="flex items-center gap-2 font-medium text-[#2E134D] w-1/4 min-w-[200px]">
-                          {sectionIndex === 0 ? <Cpu className="size-4 text-[#2E134D]" /> : <Sparkles className="size-4 text-[#2E134D]" />}
-                          <span>{category}</span>
-                        </td>
-                        {typedPricingData.plans.map(plan => (
-                          <td key={`category-header-${plan.id}`} className={cn(
-                            "border-none px-4 w-1/4 min-w-[200px]"
-                          )}></td>
-                        ))}
-                      </tr>
-                      {featureKeys.map((key, featureIndex) => (
-                        <tr key={`feature-${sectionIndex}-${featureIndex}`} className="*:border-b *:py-3 *:border-[#E2D9ED]">
-                          <td className="text-[#6B7280] font-medium text-[10px] sm:text-xs md:text-sm w-1/4 min-w-[200px]">{key.label}</td>
-                          {typedPricingData.plans.map((plan) => (
-                            <td key={`feature-${plan.id}-${featureIndex}`} className={cn(
-                              "w-1/4 min-w-[200px]",
+              <PricingTable
+                categories={featureCategories}
+                plans={typedPricingData.plans}
+              />
 
-                            )}>
-                              <div className={cn(
-                                "py-2"
-                              )}>
-                                {typeof plan.details[key.key as keyof PlanDetails] === "boolean" ? (
-                                  plan.details[key.key as keyof PlanDetails] ? (
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#39089D" className="size-4">
-                                      <path fillRule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z" clipRule="evenodd" />
-                                    </svg>
-                                  ) : ""
-                                ) : (
-                                  <span className="text-[10px] sm:text-xs md:text-sm text-[#111827]">
-                                    {plan.details[key.key as keyof PlanDetails]}
-                                  </span>
-                                )}
-                              </div>
-                            </td>
-                          ))}
-                        </tr>
-                      ))}
-                    </>
-                  ))}
-                  <tr className="*:py-6">
-                    <td className="w-1/4 min-w-[200px]"></td>
-                    {typedPricingData.plans.map(plan => (
-                      <td key={`footer-${plan.id}`} className={cn(
-                        "w-1/4 min-w-[200px]",
+              <h1 className="mt-10 font-bold  text-[#2E134D] text-lg sm:text-2xl">Add ons</h1>
 
-                      )}></td>
-                    ))}
-                  </tr>
-                </tbody>
-              </table>
+              <PricingTable
+                categories={featureAddons}
+                plans={typedPricingData.plans}
+              />
             </div>
           </div>
         </section>

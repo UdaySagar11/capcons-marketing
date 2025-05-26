@@ -116,21 +116,18 @@ export interface Career {
   status: JobStatus[];
 }
 
-export interface PlanDetails {
-  ads?: string;
-  replyBoost?: string;
-  radar?: boolean;
-  editPost?: boolean;
-  longerPosts?: boolean;
-  backgroundVideo?: boolean;
-  downloadVideos?: boolean;
-  checkmark?: boolean;
-  optionalIDVerification?: boolean;
-  encryptedMessages?: boolean;
-  highlightsTab?: boolean;
-  bookmarkFolders?: boolean;
-  appIcons?: boolean;
-  customNavigation?: boolean;
+export interface Feature {
+  label: string;
+  values: {
+    basic: string | boolean | undefined;
+    premium: string | boolean | undefined;
+    enterprise: string | boolean | undefined;
+    custom: string | boolean | undefined;
+  };
+}
+
+export interface FeatureCategory {
+  [category: string]: Feature[];
 }
 
 export interface ScreenAuthenticityPermissions {

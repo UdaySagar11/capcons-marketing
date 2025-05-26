@@ -5,7 +5,6 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import { Check } from 'lucide-react'
 import { pricingData, featureCategories } from '@/config/mock/pricing'
 import RoundedBottom from '@/components/common/rounded-bottom'
-import { PlanDetails } from '@/@types'
 import { SubscriptionForm } from './_components/subscription-form'
 
 type Plan = typeof pricingData.plans[number]
@@ -20,11 +19,11 @@ const ConfirmPage = () => {
 
   const selectedPlan = typedPricingData.plans.find(p => p.id === planId) || typedPricingData.plans[0]
 
-  const features = Object.entries(featureCategories).map(([category, featureKeys]) => ({
+  const features = Object.entries(featureCategories).map(([category, features]) => ({
     category,
-    features: featureKeys.map(({ key, label }) => ({
-      name: label,
-      value: selectedPlan.details[key as keyof PlanDetails]
+    features: features.map((feature) => ({
+      name: feature.label,
+      value: feature.values[selectedPlan.id as keyof typeof feature.values]
     }))
   }))
 
@@ -33,6 +32,7 @@ const ConfirmPage = () => {
   }
 
   const handleFormSubmit = async (values: { couponCode?: string }) => {
+    console.log(values)
     router.push('/pricing/success')
   }
 
